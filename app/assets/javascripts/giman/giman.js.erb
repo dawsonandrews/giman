@@ -54,7 +54,7 @@ $(function() {
     ev.preventDefault();
     ev.stopPropagation();
 
-    $(ev.currentTarget).siblings("input[type=file]").click();
+    $('#'+$(ev.currentTarget).attr('data-giman-drop-upload')).click();
   });
 
   $(document).on("drop", "[data-giman-drop-upload]", function(ev) {
