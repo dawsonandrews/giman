@@ -61,7 +61,7 @@ $(function() {
     ev.preventDefault();
     ev.stopPropagation();
 
-    var $input = $(ev.currentTarget),
+    var $input = $('#'+$(ev.currentTarget).attr('data-giman-drop-upload')),
         targetParam = $input.attr("data-giman-param"),
         dataTransfer = ev.originalEvent.dataTransfer,
         files = dataTransfer.files;
