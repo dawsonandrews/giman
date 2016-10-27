@@ -33,9 +33,10 @@ $(function() {
         targetParam = $input.attr("data-giman-param"),
         files = ev.target.files;
 
-    _.each(files, function(file) {
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i];
       directUploadFile(file, $input, targetParam);
-    }); // files.forEach
+    };
   });
 
   // Disable standard file dragging navigation
@@ -65,9 +66,10 @@ $(function() {
         dataTransfer = ev.originalEvent.dataTransfer,
         files = dataTransfer.files;
 
-    _.each(files, function(file) {
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i];
       directUploadFile(file, $input, targetParam);
-    }); // files.forEach
+    };
   });
 
   $(document).on("directUpload:removeFile", function(ev, args) {
@@ -129,7 +131,7 @@ $(function() {
 
     // Get a presigned URL to begin the upload
     $.ajax({
-      url: "/uploads/presign"
+      url: "<%= Rails.application.routes.url_helpers.giman_url(only_path: true) %>/presign"
     }).done(function(data, status) {
       var formData = new FormData();
       formData.append("key", data.fields["key"]);
@@ -186,7 +188,7 @@ $(function() {
         };
 
         $.ajax({
-          url: "/uploads",
+          url: "<%= Rails.application.routes.url_helpers.giman_url(only_path: true) %>/create",
           type: "POST",
           data: {
             url: fileData.url,

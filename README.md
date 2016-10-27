@@ -6,6 +6,7 @@ Giman makes uploading files directly to AWS S3 a breeze. It supports a modern JS
 Add this line to your application's Gemfile:
 
 ```ruby
+gem 'aws-sdk', '>= 2.0'
 gem 'giman'
 ```
 

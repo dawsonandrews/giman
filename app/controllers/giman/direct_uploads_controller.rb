@@ -1,7 +1,7 @@
 module Giman
   class DirectUploadsController < ApplicationController
     def create
-      file = DirectUploadFile.new(file_params)
+      file = Giman::FileUpload.new(file_params)
 
       if file.save
         render json: file.attributes.slice("id", *file_fields), status: 201
