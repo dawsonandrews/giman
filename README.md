@@ -2,9 +2,6 @@
 
 Giman makes uploading files directly to AWS S3 a breeze. It supports a modern JS evented interface with built in support for drag and drop uploads.
 
-## Usage
-Coming soon.
-
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -31,6 +28,28 @@ Require giman JS (ensure it is after jquery)
 ```js
 //= require jquery
 //= require giman/giman
+```
+
+## Usage
+
+### Listen out for events
+
+```js
+$(document).on("directUpload:started", function(ev, args) {
+  console.log("directUpload:started", args);
+});
+
+$(document).on("directUpload:failed", function(ev, args) {
+  console.error("directUpload:failed", args.message);
+});
+
+$(document).on("directUpload:progress", function(ev, args) {
+  console.log("directUpload:progress", args.percentLoaded+"%");
+});
+
+$(document).on("directUpload:complete", function(ev, args) {
+  console.log("directUpload:complete", args.fileData);
+});
 ```
 
 ## Contributing

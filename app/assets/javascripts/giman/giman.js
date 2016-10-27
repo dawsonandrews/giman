@@ -3,14 +3,13 @@
  *
  * Example Form inputs
  * -------------------
- * <input type="hidden" id="product_images" name="product[images]" value="[{}, {}]">
- * <input type="file" data-direct-s3-upload data-direct-s3-upload-for="product_images" multiple="multiple" data-supported-types="image/jpeg,image/jpg,image/png,image/gif">
- * <div class="file-upload-dropbox" style="height: 120px; border: dashed 2px #ccc;" data-direct-s3-upload-dropbox data-direct-s3-upload-for="product_images"></div>
+ * <input type="hidden" name="product[image_ids][]" value="1">
+ * <input type="file" data-giman-file-upload data-giman-param="product_images" multiple="multiple" data-supported-types="image/jpeg,image/jpg,image/png,image/gif">
+ * <div class="file-upload-dropbox" style="height: 120px; border: dashed 2px #ccc;" data-giman-drop-upload data-giman-param="product_images"></div>
  *
  */
 $(function() {
   var directUploadId = 0;
-  // Loggers:
 
   $(document).on("directUpload:started", function(ev, args) {
     console.log("directUpload:started", args);
@@ -29,9 +28,9 @@ $(function() {
   });
 
 
-  $(document).on("change", "[data-direct-s3-upload]", function(ev) {
+  $(document).on("change", "[data-giman-file-upload]", function(ev) {
     var $input = $(ev.currentTarget),
-        targetParam = $input.attr("data-direct-s3-upload-for"),
+        targetParam = $input.attr("data-giman-param"),
         files = ev.target.files;
 
     _.each(files, function(file) {
@@ -50,19 +49,19 @@ $(function() {
     e.preventDefault();
   });
 
-  $(document).on("click", "[data-direct-s3-upload-dropbox]", function(ev) {
+  $(document).on("click", "[data-giman-drop-upload]", function(ev) {
     ev.preventDefault();
     ev.stopPropagation();
 
     $(ev.currentTarget).siblings("input[type=file]").click();
   });
 
-  $(document).on("drop", "[data-direct-s3-upload-dropbox]", function(ev) {
+  $(document).on("drop", "[data-giman-drop-upload]", function(ev) {
     ev.preventDefault();
     ev.stopPropagation();
 
     var $input = $(ev.currentTarget),
-        targetParam = $input.attr("data-direct-s3-upload-for"),
+        targetParam = $input.attr("data-giman-param"),
         dataTransfer = ev.originalEvent.dataTransfer,
         files = dataTransfer.files;
 
