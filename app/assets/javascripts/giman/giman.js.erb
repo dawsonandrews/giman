@@ -114,6 +114,11 @@ $(function() {
       });
     }
 
+    if ( ! $input.attr("multiple")) {
+      // Remove all previous IDs
+      $input.closest("form").find('input[name="'+targetParam+'"]').remove();
+    }
+
     $(document).trigger("directUpload:started", {
       uniqueFileId: uniqueFileId,
       file: file,
