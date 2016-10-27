@@ -1,8 +1,9 @@
 # Giman
-Short description and motivation.
+
+Giman makes uploading files directly to AWS S3 a breeze. It supports a modern JS evented interface with built in support for drag and drop uploads.
 
 ## Usage
-How to use my plugin.
+Coming soon.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -14,15 +15,12 @@ gem 'giman'
 And then execute:
 ```bash
 $ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install giman
+$ bin/rails generate giman:install
+$ bin/rails db:migrate
 ```
 
 ## Contributing
-Contribution directions go here.
+Contributions are welcome.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
