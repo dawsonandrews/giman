@@ -12,11 +12,25 @@ Add this line to your application's Gemfile:
 gem 'giman'
 ```
 
+Setup Aws (config/initializers/aws.rb)
+```rb
+Aws.config.update({
+  region: ENV.fetch("AWS_REGION", "us-east-1"),
+  credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
+})
+```
+
 And then execute:
 ```bash
 $ bundle
-$ bin/rails generate giman:install
+$ bin/rails giman:install:migrations
 $ bin/rails db:migrate
+```
+
+Require giman JS (ensure it is after jquery)
+```js
+//= require jquery
+//= require giman/giman
 ```
 
 ## Contributing
