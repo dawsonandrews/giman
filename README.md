@@ -55,7 +55,30 @@ class ApplicationRecord < ActiveRecord::Base
 end
 ```
 
+Include giman helpers in ApplicationController
+```rb
+helper Giman::ApplicationHelper
+```
+
 ## Usage
+
+### Rails helpers
+
+```rb
+# Multiple fields
+giman_hidden_fields(product.images, param: "product[image_ids][]")
+# Single field
+giman_hidden_field(user.avatar, param: "user[avatar_id]")
+
+# File input field
+giman_file_field("product[image_ids][]", id: "giman-file-input-1", style: "display: none", multiple: true, data: {supported_types: "image/jpeg,image/jpg,image/png,image/gif"})
+```
+
+```html
+<%= giman_dropbox_field("product[image_ids][]", style: "height: 120px; border: dashed 2px #ccc;", multiple: true, class: "file-upload-dropbox", data: {giman_drop_upload: "giman-file-input-1", supported_types: "image/jpeg,image/jpg,image/png,image/gif"}) do %>
+  <span class="upload-text" style="text-align:center;">Drop files or click here to upload</span>
+<% end %>
+```
 
 ### Listen out for events
 
