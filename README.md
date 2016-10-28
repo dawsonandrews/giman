@@ -47,6 +47,14 @@ Require giman JS (ensure it is after jquery)
 //= require giman/giman
 ```
 
+Include giman application helpers in your application record or models
+```rb
+class ApplicationRecord < ActiveRecord::Base
+  include Giman::AttachmentHelpers
+  self.abstract_class = true
+end
+```
+
 ## Usage
 
 ### Listen out for events
