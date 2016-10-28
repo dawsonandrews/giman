@@ -8,18 +8,15 @@ module Giman
 
     class_methods do
       def has_giman_attachment(name = :upload)
-        has_one name.to_sym, class_name: "Giman::FileUpload", as: :attachable
+        belongs_to name.to_sym, class_name: "Giman::FileUpload", required: false
 
         define_method("#{name}_id=".to_sym) do |val|
+          super(val)
           if upload = Giman::FileUpload.find_by(id: val)
             @giman_unsaved_attachments ||= []
             @giman_unsaved_attachments << upload
             self.send("#{name}=".to_sym, upload)
           end
-        end
-
-        define_method("#{name}_id".to_sym) do
-          self.send("#{name}".to_sym).try(:id)
         end
 
         define_method("#{name}_url".to_sym) do
