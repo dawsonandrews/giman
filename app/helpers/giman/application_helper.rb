@@ -1,7 +1,7 @@
 module Giman
   module ApplicationHelper
     def giman_hidden_fields(uploads, param: "upload")
-      uploads.map { |upload| giman_hidden_field(upload, param: param) }.join("\n")
+      uploads.map { |upload| giman_hidden_field(upload, param: param) }.join("\n").html_safe
     end
 
     def giman_hidden_field(upload, param: "upload")
