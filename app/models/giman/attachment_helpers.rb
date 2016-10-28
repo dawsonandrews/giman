@@ -3,7 +3,6 @@ module Giman
     extend ActiveSupport::Concern
 
     included do
-      helper_method :current_team_role
     end
 
     class_methods do
