@@ -8,7 +8,9 @@ module Giman
       resp = bucket.presigned_post(
         key: s3_key,
         success_action_status: '201',
-        acl: 'public-read'
+        acl: 'public-read',
+        content_length_range: 1..(1024*1024),
+        content_type_starts_with: ""
       )
 
       render json: {

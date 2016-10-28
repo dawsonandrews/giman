@@ -147,6 +147,7 @@ $(function() {
       formData.append("x-amz-date", data.fields["x-amz-date"]);
       formData.append("x-amz-signature", data.fields["x-amz-signature"]);
       formData.append("acl", data.fields["acl"]);
+      formData.append("Content-Type", file.type);
       formData.append("file", file);
 
       // Begin uploading the file to AWS S3
