@@ -9,7 +9,7 @@ module Giman
         key: s3_key,
         success_action_status: '201',
         acl: 'public-read',
-        content_length_range: 1..(1024*1024),
+        content_length_range: 1..(1024*1024*1024),
         content_type_starts_with: ""
       )
 

@@ -11,21 +11,21 @@
 $(function() {
   var directUploadId = 0;
 
-  $(document).on("directUpload:started", function(ev, args) {
-    console.log("directUpload:started", args);
-  });
+  // $(document).on("directUpload:started", function(ev, args) {
+  //   console.log("directUpload:started", args);
+  // });
 
-  $(document).on("directUpload:failed", function(ev, args) {
-    console.error("directUpload:failed", args.message);
-  });
+  // $(document).on("directUpload:failed", function(ev, args) {
+  //   console.error("directUpload:failed", args.message);
+  // });
 
-  $(document).on("directUpload:progress", function(ev, args) {
-    console.log("directUpload:progress", args.percentLoaded+"%");
-  });
+  // $(document).on("directUpload:progress", function(ev, args) {
+  //   console.log("directUpload:progress", args.percentLoaded+"%");
+  // });
 
-  $(document).on("directUpload:complete", function(ev, args) {
-    console.log("directUpload:complete", args.fileData);
-  });
+  // $(document).on("directUpload:complete", function(ev, args) {
+  //   console.log("directUpload:complete", args.fileData);
+  // });
 
 
   $(document).on("change", "[data-giman-file-upload]", function(ev) {
