@@ -9,6 +9,7 @@ class CreateGimanFileUploads < ActiveRecord::Migration[5.0]
       t.string   "s3_path",          null: false
       t.integer  "attachable_id"
       t.string   "attachable_type"
+      t.string   "attachable_column"
 
       t.timestamps
     end
