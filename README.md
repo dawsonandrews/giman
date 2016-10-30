@@ -75,7 +75,7 @@ giman_file_field("product[image_ids][]", id: "giman-file-input-1", style: "displ
 ```
 
 ```html
-<%= giman_dropbox_field("product[image_ids][]", style: "height: 120px; border: dashed 2px #ccc;", multiple: true, class: "file-upload-dropbox", data: {giman_drop_upload: "giman-file-input-1", supported_types: "image/jpeg,image/jpg,image/png,image/gif"}) do %>
+<%= giman_dropbox_field("product[image_ids][]", style: "height: 120px; border: dashed 2px #ccc;", multiple: true, class: "file-upload-dropbox", data: {supported_types: "image/jpeg,image/jpg,image/png,image/gif"}) do %>
   <span class="upload-text" style="text-align:center;">Drop files or click here to upload</span>
 <% end %>
 ```
