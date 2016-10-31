@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    giman (0.2.4)
+    giman (0.2.5)
       aws-sdk (>= 2.0)
       jquery-rails
       rails (>= 4.2)

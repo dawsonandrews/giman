@@ -8,7 +8,7 @@ module Giman
 
     class_methods do
       def has_giman_attachment(name = :upload)
-        has_one name.to_sym, -> { where('attachable_column = ?', name) }, class_name: "Giman::FileUpload", as: :attachable
+        has_one name.to_sym, -> { where('attachable_column = ?', name).order(created_at: :desc) }, class_name: "Giman::FileUpload", as: :attachable
 
         define_method("#{name}_id=".to_sym) do |val|
           if upload = Giman::FileUpload.find_by(id: val)
@@ -16,6 +16,9 @@ module Giman
             @giman_unsaved_attachments << upload
             upload.attachable = self
             upload.attachable_column = name.to_s
+
+            # Delete all old uploads
+            Giman::FileUpload.where("attachable_column = ? and attachable_id = ? and attachable_type = ? and id != ?", name.to_s, id, self.class.name, id).delete_all
           end
         end
 
