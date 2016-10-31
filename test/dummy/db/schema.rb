@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027191339) do
+ActiveRecord::Schema.define(version: 20161028144432) do
 
   create_table "giman_file_uploads", force: :cascade do |t|
     t.string   "filename",          null: false
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20161027191339) do
     t.string   "attachable_column"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,0 +1,46 @@
+<h1>New User</h1>
+
+“<%= ENV["AWS_S3_BUCKET"] %>”
+
+<%= form_for @user do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="textAlign-center background-error padding-small paddingTop-medium paddingBottom-medium marginBottom-large">
+      <h4 class="fontSize-medium fontWeight-normal textTransform-uppercase color-white marginBottom-small">The form contains <%= pluralize(f.object.errors.count, "error") %></h4>
+
+      <ul class="listStyle-none marginBottom-none">
+      <% f.object.errors.full_messages.each do |message| %>
+        <li class="marginBottom-extra-small color-white"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="images">
+    <label>Profile</label>
+    <ul class="images-container"></ul>
+
+    <%= giman_hidden_field(f.object.profile_photo, param: "user[profile_photo_id]") %>
+
+    <%= giman_dropbox_field("user[profile_photo_id]", style: "height: 120px; border: dashed 2px #ccc;", class: "file-upload-dropbox", data: {supported_types: "image/jpeg,image/jpg,image/png,image/gif"}) do %>
+      <span class="upload-text" style="text-align:center;">Drop files or click here to upload</span>
+    <% end %>
+  </div>
+
+  <div class="images">
+    <label>Header photo</label>
+    <ul class="images-container"></ul>
+
+    <%= giman_hidden_field(f.object.profile_photo, param: "user[header_photo_id]") %>
+
+    <%= giman_dropbox_field("user[header_photo_id]", style: "height: 120px; border: dashed 2px #ccc;", class: "file-upload-dropbox", data: {supported_types: "image/jpeg,image/jpg,image/png,image/gif"}) do %>
+      <span class="upload-text" style="text-align:center;">Drop files or click here to upload</span>
+    <% end %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

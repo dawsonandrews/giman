@@ -1,0 +1,16 @@
+<h1>Products</h1>
+
+<%= link_to "Create product", new_product_path %>
+
+<ul>
+<% Product.all.each do |product| %>
+  <li>
+    <%= product.name %>
+    <%= simple_format product.description %>
+
+    <% product.images.each do |image| %>
+      <%= image_tag image.url, width: 50, height: 50 %>
+    <% end %>
+  </li>
+<% end %>
+</ul>

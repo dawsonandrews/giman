@@ -1,0 +1,17 @@
+<h1>Users</h1>
+
+<%= link_to "new user", new_user_path %>
+
+<ul>
+<% User.all.each do |user| %>
+  <li>
+    <%= user.name %>
+    <% if user.profile_photo_url.present? %>
+      <%= image_tag user.profile_photo_url, width: 50, height: 50 %>
+    <% end %>
+    <% if user.header_photo_url.present? %>
+      <%= image_tag user.header_photo_url, width: 50, height: 50 %>
+    <% end %>
+  </li>
+<% end %>
+</ul>

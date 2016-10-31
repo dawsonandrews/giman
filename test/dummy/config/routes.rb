@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  mount Giman::Engine => "/giman"
+  resources :products
+  resources :users
+  mount Giman::Engine => '/uploads'
 end

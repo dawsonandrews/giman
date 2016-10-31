@@ -1,0 +1,37 @@
+<h1>New Product</h1>
+
+<%= form_for @product do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="textAlign-center background-error padding-small paddingTop-medium paddingBottom-medium marginBottom-large">
+      <h4 class="fontSize-medium fontWeight-normal textTransform-uppercase color-white marginBottom-small">The form contains <%= pluralize(f.object.errors.count, "error") %></h4>
+
+      <ul class="listStyle-none marginBottom-none">
+      <% f.object.errors.full_messages.each do |message| %>
+        <li class="marginBottom-extra-small color-white"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="images">
+    <ul class="images-container"></ul>
+
+    <%= giman_hidden_fields(f.object.images, param: "product[image_ids][]") %>
+
+    <%= giman_dropbox_field("product[image_ids][]", style: "height: 120px; border: dashed 2px #ccc;", multiple: true, class: "file-upload-dropbox", data: {giman_drop_upload: "giman-file-input-1", supported_types: "image/jpeg,image/jpg,image/png,image/gif"}) do %>
+      <span class="upload-text" style="text-align:center;">Drop files or click here to upload</span>
+    <% end %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
