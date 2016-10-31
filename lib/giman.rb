@@ -1,3 +1,4 @@
+require "jquery-rails"
 require "giman/engine"
 
 module Giman
