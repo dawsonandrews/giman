@@ -100,6 +100,14 @@ $(document).on("directUpload:complete", function(ev, args) {
 });
 ```
 
+### Cleanup script
+
+Forms get abandoned, files are uploaded without being attached to models. We wanted to cleanup the stale uploads every so often (we recommend running the following script daily).
+
+```sh
+$ bin/rails giman:cleanup_unused
+```
+
 ## Contributing
 Contributions are welcome.
 
