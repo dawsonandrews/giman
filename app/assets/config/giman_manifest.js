@@ -1,1 +1,1 @@
-//= link giman.js
+//= link giman/giman.js
