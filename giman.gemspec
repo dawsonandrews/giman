@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "dotenv-rails"
+  s.add_development_dependency "capybara"
 
   s.required_ruby_version = Gem::Requirement.new('>= 2.0.0')
 end
