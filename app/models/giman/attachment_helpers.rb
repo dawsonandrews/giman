@@ -15,7 +15,7 @@ module Giman
             @giman_unsaved_attachments ||= []
             @giman_unsaved_attachments << upload
             upload.attachable = self
-            upload.attachable_column = name
+            upload.attachable_column = name.to_s
           end
         end
 
