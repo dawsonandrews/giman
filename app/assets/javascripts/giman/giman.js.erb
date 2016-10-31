@@ -106,7 +106,7 @@ $(function() {
         uniqueFileId = "directUpload:"+(directUploadId++);
 
     if (supportedTypes && supportedTypes.split(",").indexOf(file.type) < 0) {
-      return $(document).trigger("directUpload:failed", {
+      return $input.trigger("directUpload:failed", {
         uniqueFileId: uniqueFileId,
         file: file,
         $input: $input,
@@ -119,7 +119,7 @@ $(function() {
       $input.closest("form").find('input[name="'+targetParam+'"]').remove();
     }
 
-    $(document).trigger("directUpload:started", {
+    $input.trigger("directUpload:started", {
       uniqueFileId: uniqueFileId,
       file: file,
       $input: $input
@@ -127,7 +127,7 @@ $(function() {
 
     var objectUrl = URL.createObjectURL(file);
 
-    $(document).trigger("directUpload:previewReady", {
+    $input.trigger("directUpload:previewReady", {
       uniqueFileId: uniqueFileId,
       file: file,
       $input: $input,
@@ -165,7 +165,7 @@ $(function() {
             myXhr.upload.addEventListener('progress',function(event) {
               var percentLoaded = Math.round((event.loaded / event.total) * 100);
 
-              $(document).trigger("directUpload:progress", {
+              $input.trigger("directUpload:progress", {
                 uniqueFileId: uniqueFileId,
                 file: file,
                 $input: $input,
@@ -211,7 +211,7 @@ $(function() {
 
           addHiddenFieldForUpload($input.closest("form"), targetParam, fileData.serverId);
 
-          $(document).trigger("directUpload:complete", {
+          $input.trigger("directUpload:complete", {
             uniqueFileId: uniqueFileId,
             file: file,
             $input: $input,
@@ -219,7 +219,7 @@ $(function() {
           });
         })
         .fail(function(err) {
-          $(document).trigger("directUpload:failed", {
+          $input.trigger("directUpload:failed", {
             uniqueFileId: uniqueFileId,
             file: file,
             $input: $input,
@@ -228,7 +228,7 @@ $(function() {
         });
       })
       .fail(function(err) {
-        $(document).trigger("directUpload:failed", {
+        $input.trigger("directUpload:failed", {
           uniqueFileId: uniqueFileId,
           file: file,
           $input: $input,
@@ -236,7 +236,7 @@ $(function() {
         });
       }); // ajax - s3 upload
     }).fail(function(err) {
-      $(document).trigger("directUpload:failed", {
+      $input.trigger("directUpload:failed", {
         uniqueFileId: uniqueFileId,
         file: file,
         $input: $input,
