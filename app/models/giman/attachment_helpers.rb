@@ -12,13 +12,15 @@ module Giman
 
         define_method("#{name}_id=".to_sym) do |val|
           if upload = Giman::FileUpload.find_by(id: val)
-            @giman_unsaved_attachments ||= []
-            @giman_unsaved_attachments << upload
-            upload.attachable = self
-            upload.attachable_column = name.to_s
+            if upload.attachable != self && upload.attachable_column != name.to_s
+              @giman_unsaved_attachments ||= []
+              @giman_unsaved_attachments << upload
+              upload.attachable = self
+              upload.attachable_column = name.to_s
 
-            # Delete all old uploads
-            Giman::FileUpload.where("attachable_column = ? and attachable_id = ? and attachable_type = ? and id != ?", name.to_s, id, self.class.name, id).delete_all
+              # Delete all old uploads
+              Giman::FileUpload.where("attachable_column = ? and attachable_id = ? and attachable_type = ? and id != ?", name.to_s, id, self.class.name, id).delete_all
+            end
           end
         end
 
